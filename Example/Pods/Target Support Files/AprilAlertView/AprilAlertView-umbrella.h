@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "AprilAlertView.h"
 
 FOUNDATION_EXPORT double AprilAlertViewVersionNumber;
 FOUNDATION_EXPORT const unsigned char AprilAlertViewVersionString[];

@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		00A4531DC2E2E8DE0C1DAE92268F6F23 /* Pods-AprilAlertView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3240497B5683C112C0A569C5FFE38E /* Pods-AprilAlertView_Tests-dummy.m */; };
-		238C56CB045F17EEBE0E68EBF308E06F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		0B351A2CC5BBB68A745CBB1D24E68C18 /* AprilAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D2A6FD738C85767F6FDF873E0E6BD6 /* AprilAlertView.m */; };
 		2DC82B4E5EE52559F41585C00FAED8E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		4AA06ED068A5A221A64557BE4AADB06D /* AprilAlertView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 79706D8729061C850DD70CDCAD5C807F /* AprilAlertView-dummy.m */; };
+		2FD6A98F90DBBAB344B8312E463AF14A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		8B838BDEC13A87C50298D5D74CD28E82 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		AE55F507051DE9502C61C1EDA755749B /* ReplaceMe.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4D35497263FD2B49BB7B220769A162 /* ReplaceMe.m */; };
+		9C3299DEEE30D91498CAC45551E32E5A /* AprilAlertView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4440F32A1052FD89B1D724320DCFBEE0 /* AprilAlertView-dummy.m */; };
+		AFB85B8A8630A79F0AB2629F31B5E4AF /* AprilAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7187C18A71723EA6D9747FAEDD7884B9 /* AprilAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B59F71B3503FEB6752B68716F8CC0233 /* Pods-AprilAlertView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AF5455E4EA90118B89C69429C94143E /* Pods-AprilAlertView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C14A08E7171A96A6D229EFE09D5221EB /* AprilAlertView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B2E59678DAD011BCF229D7BCD0DAF8F /* AprilAlertView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD208BE9160C437801BBE795580254AE /* AprilAlertView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9197280885ABB511040B0386C669F230 /* AprilAlertView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA716A5DB75239C825207EDDB7F8E6C4 /* Pods-AprilAlertView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F6436980DDDEEC6C2CE66109DFCFDFB4 /* Pods-AprilAlertView_Example-dummy.m */; };
 		EC5E1F8DEA4F85091040FB74811CDD6E /* Pods-AprilAlertView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 11D2ED89BEB174F69A6383464B55AD81 /* Pods-AprilAlertView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -31,7 +32,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1A2B78592CD0EB981E4F687168C9F48C;
+			remoteGlobalIDString = 96794D892778453A074EBCA962CCEB65;
 			remoteInfo = AprilAlertView;
 		};
 /* End PBXContainerItemProxy section */
@@ -40,34 +41,35 @@
 		02CA1E03B04AFBD2766FAE2AF766C6DE /* Pods-AprilAlertView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AprilAlertView_Example.modulemap"; sourceTree = "<group>"; };
 		031BE30AE1BB3683331D5658F195C24D /* Pods-AprilAlertView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AprilAlertView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		0840528A9B5A5A6CEB84F1FC6AFD615C /* Pods-AprilAlertView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AprilAlertView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1181387127C50CA1117542AE6D4E95B4 /* AprilAlertView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AprilAlertView.xcconfig; sourceTree = "<group>"; };
-		11CB7733EBB76C19787A18929430E9E8 /* AprilAlertView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AprilAlertView.modulemap; sourceTree = "<group>"; };
 		11D2ED89BEB174F69A6383464B55AD81 /* Pods-AprilAlertView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AprilAlertView_Example-umbrella.h"; sourceTree = "<group>"; };
-		1D2EA731F5A6E644A29BFB2B274BD4BE /* AprilAlertView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AprilAlertView-prefix.pch"; sourceTree = "<group>"; };
 		3AF5455E4EA90118B89C69429C94143E /* Pods-AprilAlertView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AprilAlertView_Tests-umbrella.h"; sourceTree = "<group>"; };
 		3BCB8A5443CEB6CB142AFBD633E027FB /* Pods-AprilAlertView_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AprilAlertView_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		460075F65FA0462120CE580E87785DE4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		4440F32A1052FD89B1D724320DCFBEE0 /* AprilAlertView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AprilAlertView-dummy.m"; sourceTree = "<group>"; };
 		4CBB158E6C0E22F9400F2AB068295C93 /* Pods-AprilAlertView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AprilAlertView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		4DD1152A5F522AE0A10D5647BC197C35 /* AprilAlertView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = AprilAlertView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		59520493583E65615FA53470F4B49910 /* Pods_AprilAlertView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AprilAlertView_Tests.framework; path = "Pods-AprilAlertView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		59B51A4FEB0321AAC32FF3652EB74994 /* AprilAlertView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AprilAlertView.xcconfig; sourceTree = "<group>"; };
 		59EF82C386A388DC674868ABA79B31BA /* AprilAlertView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AprilAlertView.framework; path = AprilAlertView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		5B2E59678DAD011BCF229D7BCD0DAF8F /* AprilAlertView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AprilAlertView-umbrella.h"; sourceTree = "<group>"; };
+		6D0EEEFA3AC08903CB24E1ECF1BC8EC9 /* AprilAlertView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AprilAlertView-prefix.pch"; sourceTree = "<group>"; };
+		7187C18A71723EA6D9747FAEDD7884B9 /* AprilAlertView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AprilAlertView.h; path = AprilAlertView/Classes/AprilAlertView.h; sourceTree = "<group>"; };
 		76284E3FC07B65472B8CC877291ACE60 /* Pods-AprilAlertView_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AprilAlertView_Example-resources.sh"; sourceTree = "<group>"; };
-		79706D8729061C850DD70CDCAD5C807F /* AprilAlertView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AprilAlertView-dummy.m"; sourceTree = "<group>"; };
+		9197280885ABB511040B0386C669F230 /* AprilAlertView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AprilAlertView-umbrella.h"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		98D279385C43B87FBD58283B4E7CB5A5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		A23A0089A182D0DE723107D3167B7D43 /* Pods-AprilAlertView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AprilAlertView_Example-frameworks.sh"; sourceTree = "<group>"; };
 		AC31B836296B5978DB2FE4C6D0545BC1 /* Pods-AprilAlertView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AprilAlertView_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		AD16FA5D0BCB2E2913CE2F3FA7D74D6D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEB34E6D4D8853B1440B5454E15B06B4 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		AF058D9904B00394EBE05EA88E7987B0 /* Pods-AprilAlertView_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AprilAlertView_Tests-resources.sh"; sourceTree = "<group>"; };
 		B725E095DF99DB223CF14E249C55EDA8 /* Pods-AprilAlertView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AprilAlertView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		BA59A93254AB18DA25B1C2B3C8679FBF /* AprilAlertView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = AprilAlertView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BCD5A28DF7FCFF5403196AAB539C82DE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA4D35497263FD2B49BB7B220769A162 /* ReplaceMe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReplaceMe.m; path = AprilAlertView/Classes/ReplaceMe.m; sourceTree = "<group>"; };
+		C6CE7E5D4C7A5A150F246324F8C55390 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C84B4AA7C30567C8D149400B8E2ECDC0 /* AprilAlertView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AprilAlertView.modulemap; sourceTree = "<group>"; };
 		CC5A2C25DCF41BDE651737851BD1BC00 /* Pods-AprilAlertView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AprilAlertView_Tests.modulemap"; sourceTree = "<group>"; };
 		CE3240497B5683C112C0A569C5FFE38E /* Pods-AprilAlertView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AprilAlertView_Tests-dummy.m"; sourceTree = "<group>"; };
 		D792338FE96114D1A4E3EF3E21CE531B /* Pods-AprilAlertView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AprilAlertView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		DD4DFC4AC0E4D2F6A8F81EE6DB1AC735 /* Pods-AprilAlertView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AprilAlertView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		E4B3556CBD0F71AD8FA7DE4C778F7411 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		E6D2A6FD738C85767F6FDF873E0E6BD6 /* AprilAlertView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AprilAlertView.m; path = AprilAlertView/Classes/AprilAlertView.m; sourceTree = "<group>"; };
 		F1F01BCE266EA05DC5E55C0C0C852568 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4B1249ACCC6EAF5373B8F6036EB96F9 /* Pods-AprilAlertView_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AprilAlertView_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F6436980DDDEEC6C2CE66109DFCFDFB4 /* Pods-AprilAlertView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AprilAlertView_Example-dummy.m"; sourceTree = "<group>"; };
@@ -83,11 +85,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		66F37ABC9A0A9BCA49EC983D9489EB3F /* Frameworks */ = {
+		A67E8A61977E7AA5B53E0C90EFF77948 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				238C56CB045F17EEBE0E68EBF308E06F /* Foundation.framework in Frameworks */,
+				2FD6A98F90DBBAB344B8312E463AF14A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,12 +104,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		209396D2EAAD875C8FE3C3EFC0A35176 /* Development Pods */ = {
+		25E58906E65FE047C91ADFBBBFC85C69 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				C4308F18C9FAB511D0CB0BECB648CF95 /* AprilAlertView */,
+				C84B4AA7C30567C8D149400B8E2ECDC0 /* AprilAlertView.modulemap */,
+				59B51A4FEB0321AAC32FF3652EB74994 /* AprilAlertView.xcconfig */,
+				4440F32A1052FD89B1D724320DCFBEE0 /* AprilAlertView-dummy.m */,
+				6D0EEEFA3AC08903CB24E1ECF1BC8EC9 /* AprilAlertView-prefix.pch */,
+				9197280885ABB511040B0386C669F230 /* AprilAlertView-umbrella.h */,
+				C6CE7E5D4C7A5A150F246324F8C55390 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/AprilAlertView";
+			sourceTree = "<group>";
+		};
+		3832A7D99131EEFEFE82D5C6FF905CBE /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				479E112D2EECAF00285F52AFFC662F91 /* AprilAlertView */,
 			);
 			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		479E112D2EECAF00285F52AFFC662F91 /* AprilAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				7187C18A71723EA6D9747FAEDD7884B9 /* AprilAlertView.h */,
+				E6D2A6FD738C85767F6FDF873E0E6BD6 /* AprilAlertView.m */,
+				7A7E0251E9D5114D859DDAEDA52AF4CD /* Pod */,
+				25E58906E65FE047C91ADFBBBFC85C69 /* Support Files */,
+			);
+			name = AprilAlertView;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		4AE1C00E18729E0096ECC94316DEB49F /* Pods-AprilAlertView_Tests */ = {
@@ -155,11 +183,21 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		7A7E0251E9D5114D859DDAEDA52AF4CD /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				BA59A93254AB18DA25B1C2B3C8679FBF /* AprilAlertView.podspec */,
+				E4B3556CBD0F71AD8FA7DE4C778F7411 /* LICENSE */,
+				AEB34E6D4D8853B1440B5454E15B06B4 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				209396D2EAAD875C8FE3C3EFC0A35176 /* Development Pods */,
+				3832A7D99131EEFEFE82D5C6FF905CBE /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				5230B3C8E268576034BDB4AA3888D23E /* Products */,
 				645D332BD934833ED7C59860D3A6F480 /* Targets Support Files */,
@@ -192,41 +230,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C4308F18C9FAB511D0CB0BECB648CF95 /* AprilAlertView */ = {
-			isa = PBXGroup;
-			children = (
-				CA4D35497263FD2B49BB7B220769A162 /* ReplaceMe.m */,
-				DE5BD892F7EE922BB37404DC94179363 /* Pod */,
-				C9C03A0323F3610576136D826795C349 /* Support Files */,
-			);
-			name = AprilAlertView;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		C9C03A0323F3610576136D826795C349 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				11CB7733EBB76C19787A18929430E9E8 /* AprilAlertView.modulemap */,
-				1181387127C50CA1117542AE6D4E95B4 /* AprilAlertView.xcconfig */,
-				79706D8729061C850DD70CDCAD5C807F /* AprilAlertView-dummy.m */,
-				1D2EA731F5A6E644A29BFB2B274BD4BE /* AprilAlertView-prefix.pch */,
-				5B2E59678DAD011BCF229D7BCD0DAF8F /* AprilAlertView-umbrella.h */,
-				AD16FA5D0BCB2E2913CE2F3FA7D74D6D /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/AprilAlertView";
-			sourceTree = "<group>";
-		};
-		DE5BD892F7EE922BB37404DC94179363 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				4DD1152A5F522AE0A10D5647BC197C35 /* AprilAlertView.podspec */,
-				98D279385C43B87FBD58283B4E7CB5A5 /* LICENSE */,
-				460075F65FA0462120CE580E87785DE4 /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -246,35 +249,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BA79C225514835D66EA7D66C310BD0DE /* Headers */ = {
+		5F68A06570356F94D2D6BB549E2C9D41 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C14A08E7171A96A6D229EFE09D5221EB /* AprilAlertView-umbrella.h in Headers */,
+				BD208BE9160C437801BBE795580254AE /* AprilAlertView-umbrella.h in Headers */,
+				AFB85B8A8630A79F0AB2629F31B5E4AF /* AprilAlertView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1A2B78592CD0EB981E4F687168C9F48C /* AprilAlertView */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6BCBCE42C31660C85F335EA89F25B21D /* Build configuration list for PBXNativeTarget "AprilAlertView" */;
-			buildPhases = (
-				BA79C225514835D66EA7D66C310BD0DE /* Headers */,
-				48F3D77E05576DF164BE844A53E6C1BE /* Sources */,
-				66F37ABC9A0A9BCA49EC983D9489EB3F /* Frameworks */,
-				EE555F4259BF19772C4FEC011C82FDD7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AprilAlertView;
-			productName = AprilAlertView;
-			productReference = 59EF82C386A388DC674868ABA79B31BA /* AprilAlertView.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		35416505D9A91D19CE11D58542969134 /* Pods-AprilAlertView_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31BFB18136E98FF65511A0DFD1ADCB54 /* Build configuration list for PBXNativeTarget "Pods-AprilAlertView_Example" */;
@@ -313,6 +299,24 @@
 			productReference = 59520493583E65615FA53470F4B49910 /* Pods_AprilAlertView_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		96794D892778453A074EBCA962CCEB65 /* AprilAlertView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9E813C1F63CC6096B6744363D8028208 /* Build configuration list for PBXNativeTarget "AprilAlertView" */;
+			buildPhases = (
+				5F68A06570356F94D2D6BB549E2C9D41 /* Headers */,
+				163619E6F346B669628ACF7FB7547E50 /* Sources */,
+				A67E8A61977E7AA5B53E0C90EFF77948 /* Frameworks */,
+				4DE45ACEF6FF5CEE1B015D366A15115F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AprilAlertView;
+			productName = AprilAlertView;
+			productReference = 59EF82C386A388DC674868ABA79B31BA /* AprilAlertView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -334,7 +338,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1A2B78592CD0EB981E4F687168C9F48C /* AprilAlertView */,
+				96794D892778453A074EBCA962CCEB65 /* AprilAlertView */,
 				35416505D9A91D19CE11D58542969134 /* Pods-AprilAlertView_Example */,
 				94D155A35695964835BEFCBEC2046DE2 /* Pods-AprilAlertView_Tests */,
 			);
@@ -356,7 +360,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EE555F4259BF19772C4FEC011C82FDD7 /* Resources */ = {
+		4DE45ACEF6FF5CEE1B015D366A15115F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -374,12 +378,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		48F3D77E05576DF164BE844A53E6C1BE /* Sources */ = {
+		163619E6F346B669628ACF7FB7547E50 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AA06ED068A5A221A64557BE4AADB06D /* AprilAlertView-dummy.m in Sources */,
-				AE55F507051DE9502C61C1EDA755749B /* ReplaceMe.m in Sources */,
+				9C3299DEEE30D91498CAC45551E32E5A /* AprilAlertView-dummy.m in Sources */,
+				0B351A2CC5BBB68A745CBB1D24E68C18 /* AprilAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,7 +407,7 @@
 		5B65D9A817C915807EDED763F9640470 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AprilAlertView;
-			target = 1A2B78592CD0EB981E4F687168C9F48C /* AprilAlertView */;
+			target = 96794D892778453A074EBCA962CCEB65 /* AprilAlertView */;
 			targetProxy = 8DDC3B0E8525C2F2ABDC789521BA4DB1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -443,36 +447,6 @@
 			};
 			name = Release;
 		};
-		4FECD3B1AAE14223D8BAB214FF97E975 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1181387127C50CA1117542AE6D4E95B4 /* AprilAlertView.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/AprilAlertView/AprilAlertView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AprilAlertView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AprilAlertView/AprilAlertView.modulemap";
-				PRODUCT_MODULE_NAME = AprilAlertView;
-				PRODUCT_NAME = AprilAlertView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		5BF35AF3D204E404A853F3783BECBD84 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D792338FE96114D1A4E3EF3E21CE531B /* Pods-AprilAlertView_Tests.release.xcconfig */;
@@ -507,9 +481,9 @@
 			};
 			name = Release;
 		};
-		95D109F4E42F21FFAF8D5DE205D40B5D /* Release */ = {
+		5FDAB11CBE9A1A36A076E99E3B3FF98F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1181387127C50CA1117542AE6D4E95B4 /* AprilAlertView.xcconfig */;
+			baseConfigurationReference = 59B51A4FEB0321AAC32FF3652EB74994 /* AprilAlertView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -537,6 +511,36 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		92CCD15373AE3ED4CAACDCC35C08AA57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59B51A4FEB0321AAC32FF3652EB74994 /* AprilAlertView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/AprilAlertView/AprilAlertView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AprilAlertView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AprilAlertView/AprilAlertView.modulemap";
+				PRODUCT_MODULE_NAME = AprilAlertView;
+				PRODUCT_NAME = AprilAlertView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		96434B6C8FF320C976A10DAD7174A4BB /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -757,11 +761,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6BCBCE42C31660C85F335EA89F25B21D /* Build configuration list for PBXNativeTarget "AprilAlertView" */ = {
+		9E813C1F63CC6096B6744363D8028208 /* Build configuration list for PBXNativeTarget "AprilAlertView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4FECD3B1AAE14223D8BAB214FF97E975 /* Debug */,
-				95D109F4E42F21FFAF8D5DE205D40B5D /* Release */,
+				92CCD15373AE3ED4CAACDCC35C08AA57 /* Debug */,
+				5FDAB11CBE9A1A36A076E99E3B3FF98F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
