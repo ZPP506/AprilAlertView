@@ -1,0 +1,16 @@
+PODS:
+  - AprilAlertView (0.1.0)
+
+DEPENDENCIES:
+  - AprilAlertView (from `../`)
+
+EXTERNAL SOURCES:
+  AprilAlertView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AprilAlertView: 26da29e3d2b879a5c70a0b666d9875a4f97942b9
+
+PODFILE CHECKSUM: 4634a32dba326ea4ed341995b88a05c597561a69
+
+COCOAPODS: 1.5.3
