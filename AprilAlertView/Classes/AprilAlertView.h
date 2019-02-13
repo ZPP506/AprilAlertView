@@ -10,9 +10,9 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSUInteger {
-    AlertType_BottomToTop,
-    AlertType_SmallToBig,
-    AlertType_KeyframeAnimation //@[@0.9,@1.0,@1.1,@0.9,@1.05,@0.95,@1.02,@1.0];
+    AlertTypeBottomToTop,
+    AlertTypeSmallToBig,
+    AlertTypeKeyframeAnimation //@[@0.9,@1.0,@1.1,@0.9,@1.05,@0.95,@1.02,@1.0];
 }  AlertType;
 
 @interface AprilAlertView : UIView

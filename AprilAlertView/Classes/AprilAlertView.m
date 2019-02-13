@@ -7,12 +7,16 @@
 //
 
 #import "AprilAlertView.h"
+#define DefaultColor [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]
+#define DefaultKeyFrame @[@1.0,@1.1,@0.9,@1.05,@0.95,@1.02,@1.0]
 @interface AprilAlertView ()
 @property (strong , nonatomic) UIWindow * keyWindow;
 @property (assign , nonatomic) AlertType alertType;
 @property (strong , nonatomic) UIColor * currentBackgroundColor;
 @end
 @implementation AprilAlertView
+
+
 static AprilAlertView * AlertManager = nil;
 static dispatch_once_t onceToken;
 
@@ -28,10 +32,12 @@ static dispatch_once_t onceToken;
     return AlertManager;
 }
 - (void)showAlertAlertType:(AlertType)alertType backGroundColor:(UIColor *)backgroundColor{
-    
-    [[AprilAlertView currentViewController].view endEditing:YES];
-    
+    if (backgroundColor == nil) {
+        backgroundColor = DefaultColor;
+    }
     _alertType = alertType;
+
+    [[AprilAlertView currentViewController].view endEditing:YES];
     if (!_currentBackgroundColor) {
         AlertManager.backgroundColor = backgroundColor;
         _currentBackgroundColor = backgroundColor;
@@ -49,24 +55,24 @@ static dispatch_once_t onceToken;
         [AlertManager layoutIfNeeded];
         CGRect tempCgrect = subView.frame;
         /**弹窗动画*/
-        if (alertType == AlertType_BottomToTop) {
+        if (alertType == AlertTypeBottomToTop) {
             subView.frame = CGRectMake(tempCgrect.origin.x, [UIScreen mainScreen].bounds.size.height, tempCgrect.size.width, tempCgrect.size.height);
             [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
                   subView.frame = tempCgrect;
             } completion:^(BOOL finished) {
                 
             }];
-        }else if(alertType == AlertType_SmallToBig){
+        }else if(alertType == AlertTypeSmallToBig){
              subView.transform = CGAffineTransformMakeScale(0.5, 0.5);
          
             [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
              subView.transform = CGAffineTransformMakeScale(1, 1);
             } completion:^(BOOL finished) {
             }];
-        }else if(alertType == AlertType_KeyframeAnimation){
+        }else if(alertType == AlertTypeKeyframeAnimation){
             CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
             animation.keyPath = @"transform.scale";
-            animation.values = @[@1.0,@1.1,@0.9,@1.05,@0.95,@1.02,@1.0];
+            animation.values = DefaultKeyFrame;
             animation.duration = 1;
             animation.calculationMode = kCAAnimationCubic;
             [subView.layer addAnimation:animation forKey:nil];
@@ -80,13 +86,12 @@ static dispatch_once_t onceToken;
 }
 - (void)showAlert
 {
-    [self showAlertAlertType:(AlertType_SmallToBig) backGroundColor: [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
+    [self showAlertAlertType:(AlertTypeSmallToBig) backGroundColor: DefaultColor];
 }
 - (void)addSubview:(UIView *)view
 {
     [super addSubview:view];
-    /**暂时隐藏添加上的子视图
-     */
+    /**暂时隐藏添加上的子视图*/
     view.hidden = YES;
 }
 
@@ -97,11 +102,10 @@ static dispatch_once_t onceToken;
         UIView * subView =  [AlertManager.subviews firstObject];
         CGRect tempCgrect = subView.frame;
         
-        if (self.alertType == AlertType_BottomToTop) {
+        if (self.alertType == AlertTypeBottomToTop) {
             [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
                subView.frame = CGRectMake(tempCgrect.origin.x, [UIScreen mainScreen].bounds.size.height, tempCgrect.size.width, tempCgrect.size.height);
             } completion:^(BOOL finished) {
-                
             }];
         }else{
            subView.transform = CGAffineTransformMakeScale(1, 1);
@@ -132,7 +136,6 @@ static dispatch_once_t onceToken;
         for (UIView * subView in AlertManager.subviews) {
             [subView removeFromSuperview];
         }
-       
         AlertManager.hidden = YES;
         [AlertManager removeFromSuperview];
         AlertManager = nil;
@@ -173,46 +176,6 @@ static dispatch_once_t onceToken;
         return vc;
     }
     return nil;
-}
-
-#pragma mark - 暂未使用 =
-/**获取动画 - 是否要获取开始动画/否获取的是结束动画*/
-- (CAAnimation *)getCaAnimationStart:(BOOL)start{
-    CAAnimation * animationMain = nil;
-    switch (0) {
-        case 0:
-        {
-            CABasicAnimation * animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
-            animationMain = animation;
-            if(start == YES){
-                animation.fromValue = @([UIScreen mainScreen].bounds.size.height);
-                animation.toValue = @([UIScreen mainScreen].bounds.size.height*0.5);
-                
-            }else{
-                animation.fromValue = @([UIScreen mainScreen].bounds.size.height*0.5);
-                animation.toValue = @([UIScreen mainScreen].bounds.size.height);
-            }
-            
-        }
-            break;
-        case 1:
-        {
-            CABasicAnimation * animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-            animationMain = animation;
-            if (start == YES) {
-                animation.fromValue = @(0.0);
-                animation.toValue = @(1.0);
-            }else{
-                animation.fromValue =@(1.0);
-                animation.toValue =  @(0.0);
-            }
-        }
-            break;
-        default:
-            break;
-    }
-    return animationMain;
-    
 }
 //获取Window当前显示的ViewController
 + (UIViewController*)currentViewController{
