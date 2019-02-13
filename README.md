@@ -11,6 +11,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+
 ## Installation
 
 AprilAlertView is available through [CocoaPods](https://cocoapods.org). To install
@@ -20,9 +21,8 @@ it, simply add the following line to your Podfile:
 pod 'AprilAlertView'
 ```
 
-## Author
+## 使用方式
 
-ZPP506, 944160330@qq.com
 
 ## License
 
