@@ -7,6 +7,7 @@
 //
 
 #import "AprilViewController.h"
+#import "AprilAlertView.h"
 
 @interface AprilViewController ()
 
@@ -25,5 +26,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    UIView * view = [UIView new];
+    view.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width-200)/2.0, ([UIScreen mainScreen].bounds.size.height-200)/2.0, 200, 200);
+    view.backgroundColor = [UIColor redColor];
+    view.shouldTapToDismiss = YES;
+    [[AprilAlertView shareManger] addSubview:view];
+    [[AprilAlertView shareManger] showAlertAlertType:(AlertType_KeyframeAnimation) backGroundColor:nil];
+}
 @end

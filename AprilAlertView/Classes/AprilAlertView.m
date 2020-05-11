@@ -101,7 +101,7 @@ static dispatch_once_t onceToken;
     if (backgroundColor == nil) {
         backgroundColor = DefaultAlertBackGroundColor;
     }
-    [[UIViewController ap_currentViewController].view endEditing:YES];
+    [[AprilAlertView ap_currentViewController].view endEditing:YES];
     if (!_currentBackgroundColor) {
         alertBackGroundView.backgroundColor = backgroundColor;
         _currentBackgroundColor = backgroundColor;
@@ -354,6 +354,21 @@ static dispatch_once_t onceToken;
     if (currentShowView.shouldTapToDismiss) {
         [self disMiss];
     }
+}
++ (UIViewController *)ap_currentViewController {
+    UIViewController *resultVC;
+    resultVC = [self _topViewController:[[UIApplication sharedApplication].keyWindow rootViewController]];
+    return resultVC;
+}
++ (UIViewController *)_topViewController:(UIViewController *)vc {
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        return [self _topViewController:[(UINavigationController *)vc topViewController]];
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        return [self _topViewController:[(UITabBarController *)vc selectedViewController]];
+    }else{
+        return vc;
+    }
+    return nil;
 }
 @end
 
