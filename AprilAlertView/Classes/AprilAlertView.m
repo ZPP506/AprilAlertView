@@ -7,155 +7,321 @@
 //
 
 #import "AprilAlertView.h"
-#define DefaultColor [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]
-#define DefaultKeyFrame @[@1.0,@1.1,@0.9,@1.05,@0.95,@1.02,@1.0]
-@interface AprilAlertView ()
-@property (strong , nonatomic) UIWindow * keyWindow;
+#define DefaultTag 1028
+#import <objc/runtime.h>
+
+#pragma mark - AprilViewAssociate
+@interface UIView (AprilViewAssociate)
+
+@property (nonatomic, assign) NSInteger alertTag;
+
+@property (nonatomic, assign) CGFloat alertOriginAlpha;
+
+@property (nonatomic) CGAffineTransform alertTransform;
+@end
+
+@implementation UIView (AprilViewAssociate)
+/**保存原始Transform
+ */
+- (void)setAlertTransform:(CGAffineTransform)alertTransform {
+    
+    objc_setAssociatedObject(self, @selector(alertTransform), [NSValue valueWithCGAffineTransform:alertTransform], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (CGAffineTransform)alertTransform {
+    NSValue * value = objc_getAssociatedObject(self, @selector(alertTransform));
+    return [value CGAffineTransformValue];
+}
+/**保存原始Alpha值
+ */
+- (void)setAlertOriginAlpha:(CGFloat)alertOriginAlpha {
+    
+    objc_setAssociatedObject(self, @selector(alertOriginAlpha), @(alertOriginAlpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (CGFloat)alertOriginAlpha {
+    NSNumber * number = objc_getAssociatedObject(self, @selector(alertOriginAlpha));
+    if ([number isKindOfClass:[NSNumber class]]) {
+        return [number floatValue];
+    }
+    return 1;
+}
+
+/**是否弹出标志
+*/
+- (void)setAlertTag:(NSInteger)alertTag {
+    objc_setAssociatedObject(self, @selector(alertTag), @(alertTag), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSInteger)alertTag {
+    NSNumber * number = objc_getAssociatedObject(self, @selector(alertTag));
+    if ([number isKindOfClass:[NSNumber class]]) {
+        return [number integerValue];
+    }
+    return -1;
+}
+/**点击空白处是否消失
+ */
+- (void)setShouldTapToDismiss:(BOOL)shouldTapToDismiss {
+    objc_setAssociatedObject(self, @selector(shouldTapToDismiss), @(shouldTapToDismiss), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (BOOL)shouldTapToDismiss {
+    return [objc_getAssociatedObject(self, @selector(shouldTapToDismiss)) boolValue];
+}
+
+@end
+
+#pragma mark - AprilAlertView
+@interface AprilAlertView ()<UIGestureRecognizerDelegate>
+
 @property (assign , nonatomic) AlertType alertType;
+
 @property (strong , nonatomic) UIColor * currentBackgroundColor;
+
 @end
 @implementation AprilAlertView
-
-
-static AprilAlertView * AlertManager = nil;
+static AprilAlertView * alertBackGroundView = nil;
 static dispatch_once_t onceToken;
-
 + (instancetype)shareManger
 {
-    if (AlertManager == nil) {
-        
+    if (alertBackGroundView == nil) {
         dispatch_once(&onceToken, ^{
-            AlertManager = [[AprilAlertView alloc]init];
-            AlertManager.frame = [UIScreen mainScreen].bounds;
+            alertBackGroundView = [[AprilAlertView alloc]init];
+            UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:alertBackGroundView action:@selector(tapBackGrpundViewDissmiss)];
+            [alertBackGroundView addGestureRecognizer:tap];
+            tap.delegate = alertBackGroundView;
+            alertBackGroundView.frame = [UIScreen mainScreen].bounds;
         });
     }
-    return AlertManager;
-}
-- (void)showAlertAlertType:(AlertType)alertType backGroundColor:(UIColor *)backgroundColor{
-    if (backgroundColor == nil) {
-        backgroundColor = DefaultColor;
-    }
-    _alertType = alertType;
-
-    [[AprilAlertView currentViewController].view endEditing:YES];
-    if (!_currentBackgroundColor) {
-        AlertManager.backgroundColor = backgroundColor;
-        _currentBackgroundColor = backgroundColor;
-    }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        /**获取第一个弹框视图*/
-        UIView * subView =  [AlertManager.subviews firstObject];
-        if ( subView.tag == 1028) {
-            return ;
-        }
-        /**标记为已弹*/
-        subView.tag = 1028;
-        subView.hidden = NO;
-        [AlertManager layoutIfNeeded];
-        CGRect tempCgrect = subView.frame;
-        /**弹窗动画*/
-        if (alertType == AlertTypeBottomToTop) {
-            subView.frame = CGRectMake(tempCgrect.origin.x, [UIScreen mainScreen].bounds.size.height, tempCgrect.size.width, tempCgrect.size.height);
-            [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
-                  subView.frame = tempCgrect;
-            } completion:^(BOOL finished) {
-                
-            }];
-        }else if(alertType == AlertTypeSmallToBig){
-             subView.transform = CGAffineTransformMakeScale(0.5, 0.5);
-         
-            [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
-             subView.transform = CGAffineTransformMakeScale(1, 1);
-            } completion:^(BOOL finished) {
-            }];
-        }else if(alertType == AlertTypeKeyframeAnimation){
-            CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
-            animation.keyPath = @"transform.scale";
-            animation.values = DefaultKeyFrame;
-            animation.duration = 1;
-            animation.calculationMode = kCAAnimationCubic;
-            [subView.layer addAnimation:animation forKey:nil];
-        }
-        if ([[self topCofoolViewController] isKindOfClass:[UINavigationController class]] && [self topCofoolViewController].childViewControllers.count > 1) {
-            [[self topCofoolViewController].navigationController.view addSubview:AlertManager];
-        }else{
-            [self.keyWindow addSubview:AlertManager];
-        }
-    });
+    return alertBackGroundView;
 }
 - (void)showAlert
 {
-    [self showAlertAlertType:(AlertTypeSmallToBig) backGroundColor: DefaultColor];
+    [self showAlertAlertType:(AlertType_SmallToBig) backGroundColor: DefaultAlertBackGroundColor];
+}
+- (void)showAlertAlertType:(AlertType)alertType backGroundColor:(UIColor *)backgroundColor{
+    if (backgroundColor == nil) {
+        backgroundColor = DefaultAlertBackGroundColor;
+    }
+    [[UIViewController ap_currentViewController].view endEditing:YES];
+    if (!_currentBackgroundColor) {
+        alertBackGroundView.backgroundColor = backgroundColor;
+        _currentBackgroundColor = backgroundColor;
+    }
+    if (_alertType == AlertType_Other) {
+        _alertType = alertType;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        /**获取弹框视图*/
+        UIView * subView =  [alertBackGroundView.subviews firstObject];
+        if ( subView.alertTag == DefaultTag) {
+            return ;
+        }
+        subView.alertTag = DefaultTag;
+        subView.hidden = NO;
+        [alertBackGroundView layoutIfNeeded];
+        /**弹窗动画*/
+        [self showAlertAnimation:alertType subbView:subView];
+        /**将背景弹框添加到window或者TopViewController上*/
+        [self showAlertBackGroundViewPresentView:alertBackGroundView];
+    });
+}
+- (void)showAlertBackGroundViewPresentView:(UIView *)alertBackgroundTempView{
+ 
+    UIViewController * controller = [self topCofoolViewController];
+    if (![controller isKindOfClass:[UITabBarController class]] && controller.tabBarController.childViewControllers.count > 1)
+    {
+        controller = controller.tabBarController;
+    }
+    if ([controller isKindOfClass:[UITabBarController class]] && controller.childViewControllers.count > 1) {
+        [[self topCofoolViewController].tabBarController.view addSubview:alertBackgroundTempView];
+    }else{
+        [[UIApplication sharedApplication].keyWindow addSubview:alertBackgroundTempView];
+    }
+    
+}
+- (void)showAlertAnimation:(AlertType)alertType subbView:(UIView *)subView{
+    CGRect originRect = subView.frame;
+    if (alertType == AlertType_BottomToTop) {
+        [self showAlertAnimation_BottomToTopWithView:subView originRect:originRect];
+    }else if(alertType == AlertType_SmallToBig){
+        [self showAlertAnimation_SmallToBigWithView:subView originRect:originRect];
+    }else if(alertType == AlertType_KeyframeAnimation){
+        [self showAlertAnimation_KeyframeAnimationWithView:subView];
+    }else if (alertType == AlertType_alphaChange){
+        // 透明度渐变
+        [self showAlertAnimation_AlphaChangeWithView:subView];
+    }else if (alertType == AlertType_push){
+        // push
+        [self showAlertAnimation_PushWithView:subView originRect:originRect];
+    }else if (alertType == AlertType_SmallToBottm){
+        [self showAlertAnimation_SmallToBigWithView:subView originRect:originRect];
+    }
+    
 }
 - (void)addSubview:(UIView *)view
 {
     [super addSubview:view];
+    
+   
+    //记录原始值
+    view.alertTransform = view.transform;
+    view.alertOriginAlpha = view.alpha;
+    
     /**暂时隐藏添加上的子视图*/
     view.hidden = YES;
 }
-
-/**关闭弹框*/
+#pragma mark - 显示动画
+- (void)showAlertAnimation_BottomToTopWithView:(UIView *)subView originRect:(CGRect)originRect{
+    subView.frame = CGRectMake(originRect.origin.x, [UIScreen mainScreen].bounds.size.height, originRect.size.width, originRect.size.height);
+    [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
+        subView.frame = originRect;
+    } completion:^(BOOL finished) {
+    }];
+}
+- (void)showAlertAnimation_SmallToBigWithView:(UIView *)subView originRect:(CGRect)originRect{
+    subView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+    CGFloat originAlpha = subView.alpha;
+    subView.alpha = 0;
+    
+    [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
+        subView.alpha = originAlpha;
+        subView.transform = CGAffineTransformMakeScale(1, 1);
+    } completion:^(BOOL finished) {
+    }];
+}
+- (void)showAlertAnimation_KeyframeAnimationWithView:(UIView *)subView{
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+    animation.keyPath = @"transform.scale";
+    animation.values = @[@1.0,@1.1,@0.9,@1.05,@0.95,@1.02,@1.0];
+    animation.duration = 1;
+    animation.calculationMode = kCAAnimationCubic;
+    [subView.layer addAnimation:animation forKey:nil];
+}
+- (void)showAlertAnimation_AlphaChangeWithView:(UIView *)subView{
+    subView.transform = CGAffineTransformMakeScale(1,1);
+    [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
+        subView.transform = CGAffineTransformMakeScale(1, 1);
+    } completion:^(BOOL finished) {
+    }];
+}
+- (void)showAlertAnimation_PushWithView:(UIView *)subView originRect:(CGRect)originRect{
+    subView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width, originRect.origin.y, originRect.size.width, originRect.size.height);
+    [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
+        subView.frame = originRect;
+    } completion:^(BOOL finished) {
+    }];
+}
+#pragma mark - 关闭弹框
 - (void)disMiss{
     
+    [self disMissCompletion:nil];
+   
+}
+- (void)disMissCompletion:(void (^)(void))completion{
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIView * subView =  [AlertManager.subviews firstObject];
-        CGRect tempCgrect = subView.frame;
-        
-        if (self.alertType == AlertTypeBottomToTop) {
-            [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
-               subView.frame = CGRectMake(tempCgrect.origin.x, [UIScreen mainScreen].bounds.size.height, tempCgrect.size.width, tempCgrect.size.height);
-            } completion:^(BOOL finished) {
-            }];
-        }else{
-           subView.transform = CGAffineTransformMakeScale(1, 1);
-            [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
-                subView.transform = CGAffineTransformMakeScale(0.5, 0.5);
-                subView.alpha = 0.01;
-            } completion:^(BOOL finished) {
-                if(finished){
-                    subView.hidden = YES;
-                }
-            }];
+        UIView * subView =  [alertBackGroundView.subviews firstObject];
+        CGRect originRect = subView.frame;
+        subView.alertTag = -1;
+        if (self.alertType == AlertType_BottomToTop) {
+            [self disMissAnimation_BottomToTopWithView:subView originRect:originRect];
+        }else if (self.alertType == AlertType_SmallToBottm) {
+            [self disMissAnimation_SamellBottomWithView:subView originRect:originRect];
+        }else if (self.alertType == AlertType_alphaChange){
+            [self disMissAnimation_AlphaChangeWithView:subView];
+        }else if (self.alertType == AlertType_push){
+            [self disMissAnimation_PushWithView:subView originRect:originRect];
         }
-        
-        
+        else{
+            [self disMissAnimation_DefalutWithView:subView];
+        }
     });
     /**判断本单利弹框中是否还有未展示视图弹框*/
-    if (AlertManager.subviews.count > 1) {
+    if (alertBackGroundView.subviews.count > 1) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [[AlertManager.subviews firstObject] removeFromSuperview];
-            [self showAlertAlertType:self.alertType backGroundColor:self.currentBackgroundColor];
+            [self shouldShowOtherView];
         });
         return;
     }
-    
     /**所有弹框弹出完毕 - */
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        //从顶部开始移除
-        for (UIView * subView in AlertManager.subviews) {
+        [self clearsAllComplete:completion];
+    });
+    
+}
+- (void)disMissAnimation_BottomToTopWithView:(UIView *)subView originRect:(CGRect)originRect{
+    [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
+        subView.frame = CGRectMake(originRect.origin.x, [UIScreen mainScreen].bounds.size.height, originRect.size.width, originRect.size.height);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+- (void)disMissAnimation_SamellBottomWithView:(UIView *)subView originRect:(CGRect)originRect{
+    [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
+        subView.frame = CGRectMake(originRect.origin.x, [UIScreen mainScreen].bounds.size.height, originRect.size.width, originRect.size.height);
+        subView.transform = CGAffineTransformMakeScale(0.2, 0.2);
+        subView.alpha = 0.01;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+- (void)disMissAnimation_DefalutWithView:(UIView *)subView{
+    subView.transform = CGAffineTransformMakeScale(1, 1);
+    [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
+        subView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+        subView.alpha = 0.01;
+    } completion:^(BOOL finished) {
+        if(finished){
+            subView.hidden = YES;
+        }
+    }];
+}
+- (void)disMissAnimation_AlphaChangeWithView:(UIView *)subView{
+    subView.transform = CGAffineTransformMakeScale(1, 1);
+    [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
+        subView.transform = CGAffineTransformMakeScale(1, 1);
+        subView.alpha = 0.01;
+    } completion:^(BOOL finished) {
+        if(finished){
+            subView.hidden = YES;
+        }
+    }];
+}
+- (void)disMissAnimation_PushWithView:(UIView *)subView originRect:(CGRect)originRect{
+    [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
+        subView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width,originRect.origin.y, originRect.size.width, originRect.size.height);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+- (void)shouldShowOtherView{
+    UIView * view = [alertBackGroundView.subviews firstObject];
+    [view removeFromSuperview];
+    view.alpha = view.alertOriginAlpha;
+    view.transform = view.alertTransform;
+    [self showAlertAlertType:self.alertType backGroundColor:self.currentBackgroundColor];
+    
+}
+- (void)clearsAllComplete:(void(^)(void))complete {
+    
+    UIView *subView = [alertBackGroundView.subviews firstObject];
+    [UIView animateWithDuration:0.25 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
+        subView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+        subView.alpha = 0.01;
+        alertBackGroundView.alpha = 0.f;
+    } completion:^(BOOL finished) {
+        for (UIView * subView in alertBackGroundView.subviews) {
             [subView removeFromSuperview];
         }
-        AlertManager.hidden = YES;
-        [AlertManager removeFromSuperview];
-        AlertManager = nil;
+        subView.alpha = subView.alertOriginAlpha;
+        subView.transform = subView.alertTransform;
+        alertBackGroundView.hidden = YES;
+        [alertBackGroundView removeFromSuperview];
+        alertBackGroundView = nil;
         self.currentBackgroundColor = nil;
         onceToken = 0;
-    });
+        if (complete) complete();
+    }];
 }
-
-#pragma mark - 懒加载
-- (UIWindow *)keyWindow
-{
-    if (_keyWindow == nil) {
-        
-        self.keyWindow = [UIApplication sharedApplication].keyWindow;
-        
-    }
-    return _keyWindow;
-}
-
-// 当前顶部控制器
+#pragma mark - 获取顶部控制器
 - (UIViewController *)topCofoolViewController {
     UIViewController *resultVC;
     resultVC = [self _topViewController:[[UIApplication sharedApplication].keyWindow rootViewController]];
@@ -163,7 +329,6 @@ static dispatch_once_t onceToken;
     while (resultVC.presentedViewController) {
         resultVC = [self _topViewController:resultVC.presentedViewController];
     }
-    
     return resultVC;
 }
 
@@ -177,26 +342,18 @@ static dispatch_once_t onceToken;
     }
     return nil;
 }
-//获取Window当前显示的ViewController
-+ (UIViewController*)currentViewController{
-    //获得当前活动窗口的根视图
-    UIViewController* vc = [UIApplication sharedApplication].keyWindow.rootViewController;
-    while (1)
-    {
-        //根据不同的页面切换方式，逐步取得最上层的viewController
-        if ([vc isKindOfClass:[UITabBarController class]]) {
-            vc = ((UITabBarController*)vc).selectedViewController;
-        }
-        if ([vc isKindOfClass:[UINavigationController class]]) {
-            vc = ((UINavigationController*)vc).visibleViewController;
-        }
-        if (vc.presentedViewController) {
-            vc = vc.presentedViewController;
-        }else{
-            break;
-        }
+#pragma mark - UITapGestureRecognizer
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    if (touch.view != alertBackGroundView) {
+        return NO;
     }
-    return vc;
+    return YES;
+}
+- (void)tapBackGrpundViewDissmiss{
+    UIView *currentShowView = [alertBackGroundView.subviews firstObject];
+    if (currentShowView.shouldTapToDismiss) {
+        [self disMiss];
+    }
 }
 @end
 

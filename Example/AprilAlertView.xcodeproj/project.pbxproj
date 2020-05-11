@@ -324,21 +324,17 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AprilAlertView_Example/Pods-AprilAlertView_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-AprilAlertView_Example/Pods-AprilAlertView_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AprilAlertView/AprilAlertView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AprilAlertView.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AprilAlertView_Example/Pods-AprilAlertView_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AprilAlertView_Example/Pods-AprilAlertView_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		907A95C09725508BC95E6460 /* [CP] Check Pods Manifest.lock */ = {

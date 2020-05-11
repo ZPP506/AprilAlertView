@@ -1,8 +1,8 @@
 {
   "name": "AprilAlertView",
   "version": "0.1.0",
-  "summary": "A short description of AprilAlertView.",
-  "description": "TODO: Add long description of the pod here.",
+  "summary": "iOS Alert View",
+  "description": "TODO: Add long description of the pod here. Hhh",
   "homepage": "https://github.com/ZPP506/AprilAlertView",
   "license": {
     "type": "MIT",
@@ -18,5 +18,5 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "AprilAlertView/Classes/**/*"
+  "source_files": "AprilAlertView/Classes/*.{h,m}"
 }
