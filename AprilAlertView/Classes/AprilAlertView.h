@@ -30,6 +30,13 @@ typedef enum : NSUInteger {
     AlertType_SmallToBottm,
 }  AlertType;
 
+typedef enum : NSUInteger {
+    
+    AlertType_normal,
+    
+    AlertType_Height,
+    
+}  AlertPriority;
 
 #pragma mark - AprilViewAssociate
 @interface UIView (AprilViewAssociate)
@@ -54,6 +61,15 @@ typedef enum : NSUInteger {
    backgroundColor: 允许为空 nil
  */
 - (void)showAlertAlertType:(AlertType)alertType
+           backGroundColor:(UIColor *)backgroundColor;
+
+/**显示警示框
+ alertType: 弹出框动画类型
+ alertPriority: 弹出框优先级
+ backgroundColor: 允许为空 nil
+ */
+- (void)showAlertAlertType:(AlertType)alertType
+             alertPriority:(AlertPriority)alertPriority
            backGroundColor:(UIColor *)backgroundColor;
 
 /**隐藏警示框

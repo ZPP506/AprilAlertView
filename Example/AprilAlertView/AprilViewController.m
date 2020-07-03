@@ -33,5 +33,22 @@
     view.shouldTapToDismiss = YES;
     [[AprilAlertView shareManger] addSubview:view];
     [[AprilAlertView shareManger] showAlertAlertType:(AlertType_KeyframeAnimation) backGroundColor:nil];
+    
+    
+    
+    UIView * view1 = [UIView new];
+    view1.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width-200)/2.0, ([UIScreen mainScreen].bounds.size.height-200)/2.0, 200, 200);
+    view1.backgroundColor = [UIColor redColor];
+    view1.shouldTapToDismiss = YES;
+    [[AprilAlertView shareManger] addSubview:view1];
+    [[AprilAlertView shareManger] showAlertAlertType:(AlertType_BottomToTop) backGroundColor:nil];
+    
+    
+    UIView * view2 = [UIView new];
+    view2.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width-200)/2.0, ([UIScreen mainScreen].bounds.size.height-200)/2.0, 200, 200);
+    view2.backgroundColor = [UIColor redColor];
+    view2.shouldTapToDismiss = YES;
+    [[AprilAlertView shareManger] addSubview:view2];
+    [[AprilAlertView shareManger] showAlertAlertType:(AlertType_SmallToBottm) backGroundColor:nil];
 }
 @end

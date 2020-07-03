@@ -66,13 +66,18 @@
 - (BOOL)shouldTapToDismiss {
     return [objc_getAssociatedObject(self, @selector(shouldTapToDismiss)) boolValue];
 }
-
+/**弹出的动画类型
+ */
+- (void)setAlertType:(AlertType)aletyType {
+    objc_setAssociatedObject(self, @selector(alertType), @(aletyType), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (AlertType)alertType {
+    return [objc_getAssociatedObject(self, @selector(alertType)) intValue];
+}
 @end
 
 #pragma mark - AprilAlertView
 @interface AprilAlertView ()<UIGestureRecognizerDelegate>
-
-@property (assign , nonatomic) AlertType alertType;
 
 @property (strong , nonatomic) UIColor * currentBackgroundColor;
 
@@ -98,6 +103,13 @@ static dispatch_once_t onceToken;
     [self showAlertAlertType:(AlertType_SmallToBig) backGroundColor: DefaultAlertBackGroundColor];
 }
 - (void)showAlertAlertType:(AlertType)alertType backGroundColor:(UIColor *)backgroundColor{
+    
+    [self showAlertAlertType:alertType alertPriority:AlertType_normal backGroundColor:backgroundColor];
+}
+- (void)showAlertAlertType:(AlertType)alertType
+  alertPriority:(AlertPriority)alertPriority
+           backGroundColor:(UIColor *)backgroundColor{
+    
     if (backgroundColor == nil) {
         backgroundColor = DefaultAlertBackGroundColor;
     }
@@ -106,9 +118,11 @@ static dispatch_once_t onceToken;
         alertBackGroundView.backgroundColor = backgroundColor;
         _currentBackgroundColor = backgroundColor;
     }
-    if (_alertType == AlertType_Other) {
-        _alertType = alertType;
+    UIView * lastView =  [alertBackGroundView.subviews lastObject];
+    if (alertType != AlertType_Other) {
+        lastView.alertType = alertType;
     }
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         /**获取弹框视图*/
         UIView * subView =  [alertBackGroundView.subviews firstObject];
@@ -119,14 +133,20 @@ static dispatch_once_t onceToken;
         subView.hidden = NO;
         [alertBackGroundView layoutIfNeeded];
         /**弹窗动画*/
-        [self showAlertAnimation:alertType subbView:subView];
+        [self showAlertAnimation:subView.alertType subbView:subView];
         /**将背景弹框添加到window或者TopViewController上*/
-        [self showAlertBackGroundViewPresentView:alertBackGroundView];
+        [self showAlertBackGroundViewPresentView:alertBackGroundView alertPriority:alertPriority];
     });
 }
-- (void)showAlertBackGroundViewPresentView:(UIView *)alertBackgroundTempView{
+- (void)showAlertBackGroundViewPresentView:(UIView *)alertBackgroundTempView alertPriority:(AlertPriority)alertPriority {
  
     UIViewController * controller = [self topCofoolViewController];
+    
+    if (alertPriority == AlertType_Height) {
+         [[UIApplication sharedApplication].keyWindow addSubview:alertBackgroundTempView];
+        return;
+    }
+    
     if (![controller isKindOfClass:[UITabBarController class]] && controller.tabBarController.childViewControllers.count > 1)
     {
         controller = controller.tabBarController;
@@ -221,13 +241,14 @@ static dispatch_once_t onceToken;
         UIView * subView =  [alertBackGroundView.subviews firstObject];
         CGRect originRect = subView.frame;
         subView.alertTag = -1;
-        if (self.alertType == AlertType_BottomToTop) {
+        AlertType alertType = subView.alertType;
+        if (alertType == AlertType_BottomToTop) {
             [self disMissAnimation_BottomToTopWithView:subView originRect:originRect];
-        }else if (self.alertType == AlertType_SmallToBottm) {
+        }else if (alertType == AlertType_SmallToBottm) {
             [self disMissAnimation_SamellBottomWithView:subView originRect:originRect];
-        }else if (self.alertType == AlertType_alphaChange){
+        }else if (alertType == AlertType_alphaChange){
             [self disMissAnimation_AlphaChangeWithView:subView];
-        }else if (self.alertType == AlertType_push){
+        }else if (alertType == AlertType_push){
             [self disMissAnimation_PushWithView:subView originRect:originRect];
         }
         else{
@@ -297,7 +318,8 @@ static dispatch_once_t onceToken;
     [view removeFromSuperview];
     view.alpha = view.alertOriginAlpha;
     view.transform = view.alertTransform;
-    [self showAlertAlertType:self.alertType backGroundColor:self.currentBackgroundColor];
+ 
+    [self showAlertAlertType:AlertType_Other backGroundColor:self.currentBackgroundColor];
     
 }
 - (void)clearsAllComplete:(void(^)(void))complete {

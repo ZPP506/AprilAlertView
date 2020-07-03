@@ -63,7 +63,7 @@
 		834AFCF2636360B8F9F6AD84 /* Pods_AprilAlertView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AprilAlertView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95259F4480D8FA249E324B29 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		A69EC72C29037258E27DB652 /* AprilAlertView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AprilAlertView.podspec; path = ../AprilAlertView.podspec; sourceTree = "<group>"; };
+		A69EC72C29037258E27DB652 /* AprilAlertView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AprilAlertView.podspec; path = ../AprilAlertView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BAD796FCD3ADBDE7BCC34684 /* Pods-AprilAlertView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AprilAlertView_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-AprilAlertView_Example/Pods-AprilAlertView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D6B868C0D703FE77060F82ED /* Pods_AprilAlertView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AprilAlertView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4A622F466A31CEBD0DE185 /* Pods-AprilAlertView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AprilAlertView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AprilAlertView_Tests/Pods-AprilAlertView_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -248,7 +248,7 @@
 				ORGANIZATIONNAME = ZPP506;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = RWHV3K9HAC;
+						DevelopmentTeam = UNRQF8Z7WA;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -260,6 +260,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -496,7 +497,7 @@
 			baseConfigurationReference = 7C502E997E50ED4583CF9323 /* Pods-AprilAlertView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = RWHV3K9HAC;
+				DEVELOPMENT_TEAM = UNRQF8Z7WA;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AprilAlertView/AprilAlertView-Prefix.pch";
 				INFOPLIST_FILE = "AprilAlertView/AprilAlertView-Info.plist";
@@ -512,7 +513,7 @@
 			baseConfigurationReference = BAD796FCD3ADBDE7BCC34684 /* Pods-AprilAlertView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = RWHV3K9HAC;
+				DEVELOPMENT_TEAM = UNRQF8Z7WA;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AprilAlertView/AprilAlertView-Prefix.pch";
 				INFOPLIST_FILE = "AprilAlertView/AprilAlertView-Info.plist";
