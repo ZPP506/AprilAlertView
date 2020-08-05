@@ -25,6 +25,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     UIView * view = [UIView new];
@@ -50,5 +51,6 @@
     view2.shouldTapToDismiss = YES;
     [[AprilAlertView shareManger] addSubview:view2];
     [[AprilAlertView shareManger] showAlertAlertType:(AlertType_SmallToBottm) backGroundColor:nil];
+    
 }
 @end

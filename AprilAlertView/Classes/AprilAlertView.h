@@ -36,6 +36,8 @@ typedef enum : NSUInteger {
     
     AlertType_Height,
     
+    AlertType_Tab,
+    
 }  AlertPriority;
 
 #pragma mark - AprilViewAssociate

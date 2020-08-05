@@ -139,9 +139,14 @@ static dispatch_once_t onceToken;
     });
 }
 - (void)showAlertBackGroundViewPresentView:(UIView *)alertBackgroundTempView alertPriority:(AlertPriority)alertPriority {
- 
-    UIViewController * controller = [self topCofoolViewController];
+    if (alertPriority == AlertType_Tab) {
+        UIViewController *resultVC = [self _topViewController:[[UIApplication sharedApplication].keyWindow rootViewController]];
+        UITabBarController *tabVC = [resultVC tabBarController];
+        [tabVC.view addSubview:alertBackgroundTempView];
+        return;
+    }
     
+    UIViewController * controller = [self topCofoolViewController];
     if (alertPriority == AlertType_Height) {
          [[UIApplication sharedApplication].keyWindow addSubview:alertBackgroundTempView];
         return;
