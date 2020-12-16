@@ -42,7 +42,7 @@
     view1.backgroundColor = [UIColor redColor];
     view1.shouldTapToDismiss = YES;
     [[AprilAlertView shareManger] addSubview:view1];
-    [[AprilAlertView shareManger] showAlertAlertType:(AlertType_BottomToTop) backGroundColor:nil];
+    [[AprilAlertView shareManger] showAlertAlertType:(AlertType_SmallToBig_dissMissNoAnimtion) backGroundColor:nil];
     
     
     UIView * view2 = [UIView new];

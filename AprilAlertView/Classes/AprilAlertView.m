@@ -179,7 +179,11 @@ static dispatch_once_t onceToken;
         [self showAlertAnimation_PushWithView:subView originRect:originRect];
     }else if (alertType == AlertType_SmallToBottm){
         [self showAlertAnimation_SmallToBigWithView:subView originRect:originRect];
+    }else if (alertType == AlertType_SmallToBig_dissMissNoAnimtion){
+        [self showAlertAnimation_SmallToBigWithView:subView originRect:originRect];
     }
+    
+    
     
 }
 - (void)addSubview:(UIView *)view
@@ -255,8 +259,9 @@ static dispatch_once_t onceToken;
             [self disMissAnimation_AlphaChangeWithView:subView];
         }else if (alertType == AlertType_push){
             [self disMissAnimation_PushWithView:subView originRect:originRect];
-        }
-        else{
+        }else if (alertType == AlertType_SmallToBig_dissMissNoAnimtion){
+            [self disMissNoAnimation_DefalutWithView:subView];
+        }else{
             [self disMissAnimation_DefalutWithView:subView];
         }
     });
@@ -288,6 +293,9 @@ static dispatch_once_t onceToken;
     } completion:^(BOOL finished) {
         
     }];
+}
+- (void)disMissNoAnimation_DefalutWithView:(UIView *)subView{
+    subView.hidden = YES;
 }
 - (void)disMissAnimation_DefalutWithView:(UIView *)subView{
     subView.transform = CGAffineTransformMakeScale(1, 1);

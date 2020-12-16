@@ -26,8 +26,13 @@ typedef enum : NSUInteger {
     AlertType_alphaChange,// 透明度渐变
     /**从右侧推出*/
     AlertType_push, // 仿系统push
+    
     /**由小变大显示之后向底部缩回*/
     AlertType_SmallToBottm,
+    
+    /**由小变大显示之后立即消失不展示消失动画*/
+    AlertType_SmallToBig_dissMissNoAnimtion,
+    
 }  AlertType;
 
 typedef enum : NSUInteger {

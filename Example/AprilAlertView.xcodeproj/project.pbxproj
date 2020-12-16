@@ -248,7 +248,7 @@
 				ORGANIZATIONNAME = ZPP506;
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = UNRQF8Z7WA;
+						DevelopmentTeam = 35SKQ5277L;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -497,7 +497,7 @@
 			baseConfigurationReference = 7C502E997E50ED4583CF9323 /* Pods-AprilAlertView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = UNRQF8Z7WA;
+				DEVELOPMENT_TEAM = 35SKQ5277L;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AprilAlertView/AprilAlertView-Prefix.pch";
 				INFOPLIST_FILE = "AprilAlertView/AprilAlertView-Info.plist";
@@ -513,7 +513,7 @@
 			baseConfigurationReference = BAD796FCD3ADBDE7BCC34684 /* Pods-AprilAlertView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = UNRQF8Z7WA;
+				DEVELOPMENT_TEAM = 35SKQ5277L;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AprilAlertView/AprilAlertView-Prefix.pch";
 				INFOPLIST_FILE = "AprilAlertView/AprilAlertView-Info.plist";
